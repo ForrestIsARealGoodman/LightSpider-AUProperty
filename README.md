@@ -14,23 +14,36 @@ Install required python module:
 2. Configuration file - Customized Query - "AUPropertySpider.yaml"
 2.1 Search parameters:
 <buy, rent, sold, share, New homes, Find agents, Lifestyle, News, Commercial>
-source_type: "sold"
+
+source_type: "buy"
+
 < house, apartment, townhouse>
+
 property_type: "house"
+
 < nsw, qld, sa, tas, vic, wa>
+
 < support only one value>
+
 < could be empty>
 state_name: "vic"
+
 < suburb name: croydon, werribee,...>
+
 < City name Sydney,  Melbourne, Brisbane, Perth, Adelaide, Gold Coast, Canberra, Newcastle, Wollongong, Logan City.>
+
 < support two or more values>
+
 location_list:
              #- "coydon"
              - "werribee"
              #- "ringwood"
+             
 < suggested to be from 1 to 5 or "any">
+
 < max_bed must be larger than min_bed>
 min_bed: "1"
+
 max_bed: "any"
 
 < suggested to be from 1 to 5 or "any">
@@ -46,6 +59,7 @@ min_land_size: "any"
 
 < ignored by realestate but domain>
 max_land_size: "any"
+
 
 2.2 RequestHeaders
 Suggested to copy the cookie from Chrome DevTools

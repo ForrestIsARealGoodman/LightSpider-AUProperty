@@ -3,9 +3,6 @@ from requests import cookies
 from lib.common.Util import *
 from urllib.parse import urlparse
 import time
-import pickle
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
 G_HEADER_REAL_ESTATE = "real_estate_headers"
 

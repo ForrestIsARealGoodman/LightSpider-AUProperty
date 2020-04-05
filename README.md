@@ -9,7 +9,7 @@ wechat: ARealGoodGuy
 
 # prerequisite
 Supports python 3.7+
-Install required python module:
+Install required python module (cmd console must be opened with administrator permission)
 
 pip3 install -r requirements.txt
 

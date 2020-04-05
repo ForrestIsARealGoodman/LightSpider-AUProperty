@@ -10,8 +10,22 @@ wechat: ARealGoodGuy
 # prerequisite
 Supports python 3.7+
 Install required python module:
+
 pip3 install -r requirements.txt
 
+# Configuration File
+
+AUPropertySpider.yaml
+
+# How to Run
+
+python .\AUPropertySpider.py
+
+# Results & Logs
+
+.\data\realestate\
+
+.\log\
 
 # V1.0  - [Released in 2020.04.05]
 1. Only supports realestate "https://www.realestate.com.au/"

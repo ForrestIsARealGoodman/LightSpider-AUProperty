@@ -1,7 +1,7 @@
 # LightSpider-AUProperty
 Simple spider for real estate (domain) only for study purpose.
 
-By Forrest Xiong.
+By Forrest Xiong
 
 Email: forrestisagoodman@gmail.com
 
@@ -30,57 +30,58 @@ python .\AUPropertySpider.py
 # V1.0  - [Released in 2020.04.05]
 1. Only supports realestate "https://www.realestate.com.au/"
 2. Configuration file - Customized Query - "AUPropertySpider.yaml"
-2.1 Search parameters:
-<buy, rent, sold, share, New homes, Find agents, Lifestyle, News, Commercial>
 
-source_type: "buy"
+      2.1 Search parameters:
+      <buy, rent, sold, share, New homes, Find agents, Lifestyle, News, Commercial>
 
-< house, apartment, townhouse>
+      source_type: "buy"
 
-property_type: "house"
+      < house, apartment, townhouse>
 
-< nsw, qld, sa, tas, vic, wa>
+      property_type: "house"
 
-< support only one value>
+      < nsw, qld, sa, tas, vic, wa>
 
-< could be empty>
-state_name: "vic"
+      < support only one value>
 
-< suburb name: croydon, werribee,...>
+      < could be empty>
+      state_name: "vic"
 
-< City name Sydney,  Melbourne, Brisbane, Perth, Adelaide, Gold Coast, Canberra, Newcastle, Wollongong, Logan City.>
+      < suburb name: croydon, werribee,...>
 
-< support two or more values>
+      < City name Sydney,  Melbourne, Brisbane, Perth, Adelaide, Gold Coast, Canberra, Newcastle, Wollongong, Logan City.>
 
-location_list:
-             #- "coydon"
-             - "werribee"
-             #- "ringwood"
-             
-< suggested to be from 1 to 5 or "any">
+      < support two or more values>
 
-< max_bed must be larger than min_bed>
-min_bed: "1"
+      location_list:
+                   #- "coydon"
+                   - "werribee"
+                   #- "ringwood"
 
-max_bed: "any"
+      < suggested to be from 1 to 5 or "any">
 
-< suggested to be from 1 to 5 or "any">
-min_bath: "1"
+      < max_bed must be larger than min_bed>
+      min_bed: "1"
 
-< 100000 ($)>
-min_price: "any"
+      max_bed: "any"
 
-< 1000000 ($)>
-max_price: "any"
-< 300 (m2)>
-min_land_size: "any"
+      < suggested to be from 1 to 5 or "any">
+      min_bath: "1"
 
-< ignored by realestate but domain>
-max_land_size: "any"
+      < 100000 ($)>
+      min_price: "any"
+
+      < 1000000 ($)>
+      max_price: "any"
+      < 300 (m2)>
+      min_land_size: "any"
+
+      < ignored by realestate but domain>
+      max_land_size: "any"
 
 
-2.2 RequestHeaders
-Suggested to copy the cookie from Chrome DevTools
+      2.2 RequestHeaders
+      Suggested to copy the cookie from Chrome DevTools
 
-2.3 RequestTimeInterval
-Determine how frequent to send out the requests, just in case the target web server detect the spider bot behavior.
+      2.3 RequestTimeInterval
+      Determine how frequent to send out the requests, just in case the target web server detect the spider bot behavior.

@@ -1,0 +1,109 @@
+#
+#------------------------------------ Currently only one search job is supported-------------------------#
+#
+SearchJob:
+                    # buy, rent, sold
+                    source_type: "buy"
+
+                    # house, apartment, townhouse
+                    property_type: "house"
+
+                    # nsw, qld, sa, tas, vic, wa
+                    # support only one value
+                    # could be empty
+                    state_name: "vic"
+
+                    # suburb name: croydon, werribee,...
+                    # City name Sydney,  Melbourne, Brisbane, Perth, Adelaide, Gold Coast, Canberra, Newcastle, Wollongong, Logan City.
+                    # support two or more values
+                    location_list:
+                                        - "coydon"
+                                        - "werribee"
+                                        - "ringwood"
+                    # suggested to be from 1 to 5 or "any"
+                    # max_bed must be larger than min_bed
+                    min_bed: "1"
+                    max_bed: "any"
+
+                    # suggested to be from 1 to 5 or "any"
+                    min_bath: "1"
+
+                    # 100000 ($) or "any"
+                    min_price: "500,000"
+
+                    # 1000000 ($) "any"
+                    max_price: "1,000,000"
+                    # 300 (m2)
+                    min_land_size: "any"
+
+                    # ignored by realestate but domain
+                    max_land_size: "any"
+
+#
+#------------------------------------ Request headers -------------------------#
+#
+RequestHeaders:
+     real_estate_headers:
+                      'accept': >-
+                                 text/html,application/xhtml+xml,
+                                 application/xml;q=0.9,image/webp,image/apng,*/*;
+                                 q=0.8,application/signed-exchange;v=b3;q=0.9
+                      'accept-encoding': 'gzip, deflate, br'
+                      'accept-language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7'
+                      'Connection': 'keep-alive'
+                      'Cache-Control': 'max-age=0'
+                      'Upgrade-Insecure-Requests': '1'
+                      'set-cookie': 'path=/; domain=.realestate.com.au'
+                      'referrer': 'https://www.realestate.com.au/'
+                      'Sec-Fetch-Dest': 'document'
+                      'Sec-Fetch-Mode': 'navigate'
+                      'Sec-Fetch-Site': 'same-origin'
+                      'Sec-Fetch-User': '?1'
+                      'User-Agent': >-
+                                      Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+                                      AppleWebKit/537.36 (KHTML, like Gecko)
+                                      Chrome/80.0.3987.149 Safari/537.36
+                      'Cookie': >-
+                                 reauid=0f8347687f450000746e885ece03000064fa0700;
+                                 Country=AU; NM-_LKJ=3ad62fd0-cf03-1ed4-66b6-fc23f43ce19a;
+                                 mid=11012324302806453344; Hint=i-0134d1c50e02091c2;
+                                 s_fid=4B1BE004A0740EBC-0E28945851EDA30A;
+                                 s_cc=true; AMCVS_341225BE55BBF7E17F000101%40AdobeOrg=1;
+                                 _sp_ses.2fe7=*; s_ecid=MCMID%7C01785585626073332773502839180405418904;
+                                 s_vi=[CS]v1|2F4437420515A011-40000924E20CE4AC[CE];
+                                 AMCV_341225BE55BBF7E17F000101%40AdobeOrg=-330454231%7CMCIDTS%7C18357%7C
+                                 MCMID%7C01785585626073332773502839180405418904%7CMCAAMLH-1586604291%7C3%7
+                                 CMCAAMB-1586604291%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7
+                                 CMCOPTOUT-1586006687s%7CNONE%7CMCAID%7C2F4437420515F816-400007A5C20D4141%7
+                                 CvVersion%7C3.1.2;
+                                 _fbp=fb.2.1585999498608.1854417477;
+                                 VT_LANG=language%3Den-US; '
+                                 QSI_HistorySession=https%3A%2F%2Fwww.realestate.com.au%2Fbuy%2Fproperty-house-
+                                 with-1-bedroom-in-Werribee%2520VIC%25203030%2Flist-1%3Fsource%3Drefinement%26
+                                 numBaths%3D1%26~1585999537665; s_sq=%5B%5BB%5D%5D;
+                                 QSI_SI_50fmRcIKsSzWlmZ_intercept=true;
+                                 kmam_lapoz=m%2FYYngOJJTmqMTReWDy8tQ%3D%3D%3A%3A%2FIJu5skEpYRa5Pw%2B
+                                 wHzUwTvM6AAYcLJ54xsZBiDIljWDr7W3BY3whjk9AVYeIjjHB9rQmc8S8BcoYrZqubNjx
+                                 Tsm5df21iYDsK9uGkWkQQDGB4ikaDqULUwIbGyxgvHfXcQ%2BaM7w2eUsBsyzA7nQw4tRp
+                                 TgsjN2Qxc2NptoafM8FsUrMhivxGH7d6L2J6u9geHH1LqDbkTMV%2Fm%2BzpLI4qNw%2FRmv
+                                 LwxToUgl23JjNvg2%2B1KBTdrAOgKE838zauljvUwussaEy4%2FbI1BFEr6p5Ppi0sGN4jp
+                                 GEw%2FgUDfdbX%2BaJ9FPxkSnBhgVRn%2BC5OaDE9rY%2FYpr%2FFiV7u4FWJnSlxZgJpADOPwL
+                                 A7FZQgL%2B8yxP%2B6aES18YfgAP6sPL4isDlkhxyJvAHYsFPKZLlb3ZgAx4YqWddM3lshG8Km
+                                 CVlIMKsxiD2%2FwbZQ4iJ31inBNQX5MY6FOz8aADD7LBznggFsSs%2B6ndtu3aYrUGzAWYZ7h0
+                                 TD%2FPspAtYD8OI81VuOs%2Bs%2BGs94v9DUOX58fFW9hs%2FTQ%3D%3D;
+                                 utag_main=v_id:017144ef91c20015da71e6dcf09503073007d06b00bd0$_sn:1$_ss:0$_st:
+                                 1586001910869$ses_id:1585999483333%3Bexp-session$_pn:4%3Bexp-session$vapi_domain:
+                                 realestate.com.au$dc_visit:1$dc_event:8%3Bexp-session$dc_region:ap-southeast-2%3B
+                                 exp-session; _sp_id.2fe7=347647ec-90ca-4bfc-8f87-4aa5cd4f3191.1585999488.1.15860
+                                 00112.1585999488.aa02933d-832e-4b69-9abe-910d8b22b997;
+                                 External=%2FAPPNEXUS%3D4566801285870281179%2FCASALE%3DXn-7-osFVSQAA
+                                 FdfOHAAAAB7%25269960%2FPUBMATIC%3D94A89238-A757-4353-AB43-D7ABAB6B88DD%2FRUB
+                                 ICON%3DK8CDHO67-Q-J9B%2F_EXP%3D1617536124%2F_exp%3D1617536127
+
+#
+#------------------------------------ Request Time Interval -------------------------#
+# milliseconds - ex: 300 , 600, 900, 1200, ..., 3000
+RequestTimeInterval:
+              min_time_interval: 300
+              max_time_interval: 1200
+              min_time_step: 300

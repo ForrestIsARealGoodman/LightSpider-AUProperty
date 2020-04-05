@@ -11,7 +11,7 @@ wechat: ARealGoodGuy
 Supports python 3.7+
 Install required python module (cmd console must be opened with administrator permission)
 
-pip3 install -r requirements.txt
+pip3 install -r requirements.ini
 
 # Configuration File
 

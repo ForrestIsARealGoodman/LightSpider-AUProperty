@@ -2,8 +2,8 @@
 #------------------------------------ Currently only one search job is supported-------------------------#
 #
 SearchJob:
-                    # buy, rent, sold
-                    source_type: "buy"
+                    # sale, rent, sold
+                    source_type: "sale"
 
                     # house, apartment, townhouse
                     property_type: "house"
@@ -17,28 +17,60 @@ SearchJob:
                     # City name Sydney,  Melbourne, Brisbane, Perth, Adelaide, Gold Coast, Canberra, Newcastle, Wollongong, Logan City.
                     # support two or more values
                     location_list:
-                                        - "coydon"
-                                        - "werribee"
-                                        - "ringwood"
+                                        - "wantirna"
                     # suggested to be from 1 to 5 or "any"
                     # max_bed must be larger than min_bed
                     min_bed: "1"
-                    max_bed: "any"
+                    max_bed: "5"
 
                     # suggested to be from 1 to 5 or "any"
                     min_bath: "1"
+                    max_bath: "any"
 
                     # 100000 ($) or "any"
                     min_price: "500,000"
 
                     # 1000000 ($) "any"
                     max_price: "1,000,000"
+
                     # 300 (m2)
-                    min_land_size: "any"
+                    min_land_size: "300"
 
                     # ignored by realestate but domain
-                    max_land_size: "any"
+                    max_land_size: "1100"
 
+                    # 1, 2, 3, 4, any
+                    min_car_space: "any"
+
+                    # 1, 2, 3, 4, any
+                    max_car_space: "any"
+
+#------------------------------------ School District Property -------------------------#
+
+                    # lower limit school scores: lower than its value will be ignored
+                    school_scores: "98"
+
+                    # school type: 'Any', 'Government', 'Non-government'
+                    school_type: "Government"
+
+                    # "Multiple" - each school property has one sheet, "Single" - all school property in one sheet
+                    school_report_sheet: "Single"
+
+#------------------------------------ Common Switches -------------------------#
+                    # 'any' - property both school district and suburb;
+                    # 'school', property per school district in given suburbs provided by "location_list"
+                    # 'suburb', property per suburb provided by "location_list"
+                    crawler_target: "school"
+
+                    # 'district' - property both school district and suburb;
+                    # 'top', all top schools ranked by scores (param: school_scores) in state (param: state_name)
+                    crawler_school_target: "top"
+#
+#------------------------------------ Crawler sites -------------------------#
+#
+CrawlerSites:
+             - domain
+             # real estate is currently not supported
 #
 #------------------------------------ Request headers -------------------------#
 #
@@ -59,20 +91,21 @@ RequestHeaders:
                       'Sec-Fetch-User': '?1'
                       'pragma' : no-cache
                       'User-Agent': >-
-                                      Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0
+                                      Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36
                       'Cookie': >-
-                                 kmam_lapoz=qUIQH7RqXSKrqCkS6c3jCw%3D%3D%3A%3AYIqZi2N84XqMU1jcsXeFi1gA1YGs7Ztji
-                                 PhTMALWEVuAXjpOQt8rbjFVrmH4KMzDZcC8NCj3ixPEoylQJi1Rgvuf9bitSwWQt9z44uv698W%2BDWxuDO
-                                 JiJizVBxliNoMIUprO63CtEZFQQ94EkZiVYSKqK1Z6CAacwlsrPcXFU9xpa51I567e0e2N2vSOsPLIJwtO1a
-                                 yNYWfW2rhi8QNcuS5kesONVWaNcOjTLXKTw1glw7bcuODdnfrinD0tFru5a2HB2a%2F0jyNDBV8oH9P0Zid
-                                 C1J%2BO1bTfirMgbOHZav4zh8j3BF2xirC9FPevKra1j9meZc3kBD2YCmdWXjV1L%2FHskTJ43lURifoHnUfq
-                                 xZ8fGQsK2zhreZwdMZZD9C1kWrYldTTzB8V3%2BcbqAZFFSr%2BWnwjSiH1zHN4Bn%2BMcrbN%2BpglPCeYg%2
-                                 FHf%2FEWKt9Oyjv9PdeZ1XOSHDOxFpH0g3WRC5v9JizEfNlECjhOmYfaNo0i2kWCyh04gTDbNYDzhgMm5qkdq
-                                 Nv7TaJfIupTtZiBPcCPv%2BrXiWj3%2F9gPlRtED98YHjY70rEx%2BWEGOGCDlH9PFArzcxHXA9B6MtLE%2BL
-                                 WmeUNt2RNnEmN%2FcLgWPB9pm2sXTT%2F0TmCadnT6PeeLZakvn4BX%2FPh6rl3pmg8u2moQ%3D%3D;
-                                 reauid=1ff3ce174e530000c9aa895e7f02000005ed0d00; Country=AU;
-                                 NM-_LKJ=9b667335-dda9-46fb-17f6-4f4a85ced936
-
+                                 N/A
+     domain_headers:
+                      'accept': >-
+                                 text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+                      'accept-encoding': gzip, deflate, br
+                      'accept-language': en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7
+                      'sec-fetch-dest': document
+                      'sec-fetch-mode': navigate
+                      'sec-fetch-site': 'none'
+                      'sec-fetch-user': '?1'
+                      'upgrade-insecure-requests': '1'
+                      'user-agent': >-
+                                      Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
 #
 #------------------------------------ Request Time Interval -------------------------#
 # milliseconds - ex: 300 , 600, 900, 1200, ..., 3000

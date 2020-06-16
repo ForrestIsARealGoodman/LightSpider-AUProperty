@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4d1fb6b-adfd-4253-a8de-5b7cd35b2a32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/TestBetterEducation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AUPropertySpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/AUPropertySpider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AUPropertySpider.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/AUPropertySpider.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/realestate/buy_coydon_20200405133408.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/realestate/buy_ringwood_20200405133219.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/realestate/buy_ringwood_20200405151429.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/realestate/buy_werribee_20200405134029.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/realestate/rent_werribee_20200405130223.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/ConfigParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ConfigParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/ReportHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ReportHandler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/URLHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/URLHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/Util.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/SpiderWorker.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/SpiderWorker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/parameter/BaseParam.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/parameter/BaseParam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/property/Realestate.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/property/Realestate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/AUPropertySpider.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/AUPropertySpider.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,15 +24,32 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/LightSpider_AUProperty$URLHandler.coverage" NAME="URLHandler Coverage Results" MODIFIED="1586080292514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/common" />
-    <SUITE FILE_PATH="coverage/LightSpider_AUProperty$AUPropertySpider.coverage" NAME="AUPropertySpider Coverage Results" MODIFIED="1586080785286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LightSpider_AUProperty$Domain.coverage" NAME="Domain Coverage Results" MODIFIED="1591533070986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/property" />
+    <SUITE FILE_PATH="coverage/LightSpider_AUProperty$AUPropertySpider.coverage" NAME="AUPropertySpider Coverage Results" MODIFIED="1592315274164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LightSpider_AUProperty$Controller.coverage" NAME="Controller Coverage Results" MODIFIED="1591518984273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/core" />
+    <SUITE FILE_PATH="coverage/LightSpider_AUProperty$TestHTTPCookie.coverage" NAME="TestHTTPCookie Coverage Results" MODIFIED="1591431723775" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/LightSpider_AUProperty$TestDomain.coverage" NAME="TestDomain Coverage Results" MODIFIED="1592142588552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/LightSpider_AUProperty$TestBetterEducation.coverage" NAME="TestBetterEducation Coverage Results" MODIFIED="1592280687743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1292941937">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="15" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.24" value="2" />
+          <entry key="project.open.time.25" value="3" />
+          <entry key="project.open.time.29" value="1" />
+          <entry key="project.open.time.32" value="1" />
+          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.37" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -35,33 +57,39 @@
           <entry key="2020-04-04_20" value="1" />
           <entry key="2020-04-04_22" value="1" />
           <entry key="2020-04-05_11" value="1" />
+          <entry key="2020-04-05_13" value="1" />
+          <entry key="2020-04-05_18" value="1" />
           <entry key="LICENSE" value="1" />
-          <entry key="ini" value="1" />
-          <entry key="log" value="1" />
-          <entry key="md" value="2" />
-          <entry key="py" value="6" />
-          <entry key="yaml" value="1" />
+          <entry key="html" value="1" />
+          <entry key="ini" value="2" />
+          <entry key="log" value="2" />
+          <entry key="md" value="3" />
+          <entry key="py" value="102" />
+          <entry key="yaml" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Ini" value="1" />
-          <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="6" />
-          <entry key="YAML" value="1" />
+          <entry key="HTML" value="1" />
+          <entry key="Ini" value="2" />
+          <entry key="Markdown" value="3" />
+          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="Python" value="102" />
+          <entry key="YAML" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1" />
-          <entry key="yaml" value="142" />
+          <entry key="dummy" value="6" />
+          <entry key="py" value="9369" />
+          <entry key="yaml" value="1014" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1" />
-          <entry key="YAML" value="142" />
+          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="Python" value="9369" />
+          <entry key="YAML" value="1014" />
         </counts>
       </usages-collector>
     </session>
@@ -69,21 +97,93 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AUPropertySpider.py">
+        <entry file="file://$PROJECT_DIR$/AUPropertySpider.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="31" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="14" />
+            <state relative-caret-position="496">
+              <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/common/Util.py">
+        <entry file="file://$PROJECT_DIR$/AUPropertySpider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+            <state relative-caret-position="480">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/property/Domain.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1456">
+              <caret line="103" column="49" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="58" />
+              <folding>
+                <element signature="e#593#602#0" expanded="true" />
+                <marker date="1592313165428" expanded="true" signature="5234:5604" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/common/ReportHandler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="224" column="21" selection-start-line="224" selection-start-column="21" selection-end-line="224" selection-end-column="21" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/TestSignal.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/parameter/BaseParam.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2336">
+              <caret line="149" column="23" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/parameter/DomainParam.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/property/BetterEducation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2432">
+              <caret line="162" selection-start-line="162" selection-end-line="162" />
+              <folding>
+                <element signature="e#593#602#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/TestBetterEducation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1952">
+              <caret line="126" column="4" selection-start-line="126" selection-start-column="4" selection-end-line="137" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,77 +192,54 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/common/URLHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="688">
-              <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
+            <state relative-caret-position="1040">
+              <caret line="69" column="30" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="30" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
+                <marker date="1592142743430" expanded="true" signature="1464:3828" ph="..." />
+                <marker date="1592142743430" expanded="true" signature="4139:4145" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/common/ReportHandler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/log/AUPropertySpider.log">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/common/ConfigParser.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="92" selection-start-line="92" selection-end-line="93" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/common/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TODO.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AUPropertySpider.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>resultsList fn_tableResultsList fn_tablePostcodeList</find>
+      <find>get_content_from_html</find>
+      <find>car</find>
+      <find>parking</find>
+      <find>PropertyParams</find>
+      <find>content_embedded</find>
+      <find>_rp</find>
+      <find>check_if_location_valid</find>
+      <find>generate_spider_urls</find>
+      <find>99</find>
+      <find>Mount View Primary School</find>
+      <find>ctl00_ContentPlaceHolder1_GridView1_ctl04_HyperLinkSchool</find>
+      <find>mount view pra</find>
+      <find>mount</find>
+      <find>self._rh</find>
+      <find>GLEN%20WAVERLEY%2C3150</find>
+      <find>government</find>
+      <find>primary</find>
+      <find>tem</find>
+      <find>templet</find>
+      <find>temp</find>
+      <find>3150</find>
+      <find>Glendal</find>
+      <find>href</find>
+      <find>3 Ceduna Close, WANTIRNA SOUTH VIC 3152</find>
+      <find>_report_type</find>
+      <find>G_DOMAIN_URL_SCHOOL</find>
+      <find>report_type</find>
+      <find>color:White;background-color:#5D7B9D;font-weight:bold</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>_dp</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -170,8 +247,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/AUPropertySpider.py" />
+        <option value="$PROJECT_DIR$/lib/common/ConfigParser.py" />
+        <option value="$PROJECT_DIR$/lib/common/Util.py" />
+        <option value="$PROJECT_DIR$/test/TestHTTPCookie.py" />
+        <option value="$PROJECT_DIR$/lib/core/Controller.py" />
+        <option value="$PROJECT_DIR$/test/TestDomain.py" />
         <option value="$PROJECT_DIR$/lib/common/URLHandler.py" />
+        <option value="$PROJECT_DIR$/lib/property/Realestate.py" />
+        <option value="$PROJECT_DIR$/lib/core/SpiderWorker.py" />
+        <option value="$PROJECT_DIR$/test/TestBetterEducation.py" />
+        <option value="$PROJECT_DIR$/lib/property/BetterEducation.py" />
+        <option value="$PROJECT_DIR$/lib/property/Domain.py" />
+        <option value="$PROJECT_DIR$/lib/parameter/DomainParam.py" />
+        <option value="$PROJECT_DIR$/lib/parameter/BaseParam.py" />
         <option value="$PROJECT_DIR$/AUPropertySpider.yaml" />
+        <option value="$PROJECT_DIR$/lib/common/ReportHandler.py" />
       </list>
     </option>
   </component>
@@ -219,7 +310,25 @@
             <path>
               <item name="LightSpider-AUProperty" type="b2602c69:ProjectViewProjectNode" />
               <item name="LightSpider-AUProperty" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LightSpider-AUProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LightSpider-AUProperty" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="parameter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LightSpider-AUProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LightSpider-AUProperty" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="property" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LightSpider-AUProperty" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LightSpider-AUProperty" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -269,7 +378,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="URLHandler" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Controller" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="LightSpider-AUProperty" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -277,12 +386,78 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lib/common" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lib/core" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lib/common/URLHandler.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lib/core/Controller.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Domain" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LightSpider-AUProperty" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lib/property" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lib/property/Domain.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestBetterEducation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LightSpider-AUProperty" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/TestBetterEducation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestDomain" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LightSpider-AUProperty" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/TestDomain.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -293,12 +468,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.AUPropertySpider" />
-      <item itemvalue="Python.URLHandler" />
+      <item itemvalue="Python.Controller" />
+      <item itemvalue="Python.Domain" />
+      <item itemvalue="Python.TestBetterEducation" />
+      <item itemvalue="Python.TestDomain" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.AUPropertySpider" />
-        <item itemvalue="Python.URLHandler" />
+        <item itemvalue="Python.TestBetterEducation" />
+        <item itemvalue="Python.TestDomain" />
+        <item itemvalue="Python.Domain" />
+        <item itemvalue="Python.Controller" />
       </list>
     </recent_temporary>
   </component>
@@ -319,13 +500,13 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29957357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23452769" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.046637744" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.18655097" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3449024" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -348,6 +529,34 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/TestBetterEducation.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/property/BetterEducation.py</url>
+          <line>121</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/common/ReportHandler.py</url>
+          <line>225</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/log/AUPropertySpider.log.2020-04-04_20" />
     <entry file="file://$PROJECT_DIR$/log/AUPropertySpider.log.2020-04-04_22" />
@@ -355,23 +564,8 @@
     <entry file="file://$PROJECT_DIR$/LICENSE">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/AUPropertySpider.log">
+    <entry file="file://$PROJECT_DIR$/lib/common/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TODO.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -381,59 +575,190 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AUPropertySpider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="31" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/__init__.py">
+    <entry file="file://$PROJECT_DIR$/lib/property/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/ConfigParser.py">
+    <entry file="file://$PROJECT_DIR$/requirements.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="92" selection-start-line="92" selection-end-line="93" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="80">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common/ReportHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/AUPropertySpider.log.2020-04-05_18">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/AUPropertySpider.log.2020-04-05_13">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/AUPropertySpider.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="94" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="241" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestClass.py" />
+    <entry file="file://C:/Program Files (x86)/Python3/Lib/site-packages/bs4/element.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20368">
+          <caret line="1275" selection-start-line="1275" selection-end-line="1275" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/1.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/common/Util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="31" column="46" lean-forward="true" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+        <state relative-caret-position="640">
+          <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+            <marker date="1591524643253" expanded="true" signature="2635:4158" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestMultiProcessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestDomain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/core/Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/parameter/RealestateParam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/common/ConfigParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/property/Realestate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/core/SpiderWorker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AUPropertySpider.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AUPropertySpider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/property/Domain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1456">
+          <caret line="103" column="49" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="58" />
+          <folding>
+            <element signature="e#593#602#0" expanded="true" />
+            <marker date="1592313165428" expanded="true" signature="5234:5604" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestSignal.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/parameter/BaseParam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2336">
+          <caret line="149" column="23" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/parameter/DomainParam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/property/BetterEducation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2432">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
+          <folding>
+            <element signature="e#593#602#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestBetterEducation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1952">
+          <caret line="126" column="4" selection-start-line="126" selection-start-column="4" selection-end-line="137" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/common/URLHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
+        <state relative-caret-position="1040">
+          <caret line="69" column="30" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="30" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+            <marker date="1592142743430" expanded="true" signature="1464:3828" ph="..." />
+            <marker date="1592142743430" expanded="true" signature="4139:4145" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AUPropertySpider.yaml">
+    <entry file="file://$PROJECT_DIR$/lib/common/ReportHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+        <state relative-caret-position="388">
+          <caret line="224" column="21" selection-start-line="224" selection-start-column="21" selection-end-line="224" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

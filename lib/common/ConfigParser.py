@@ -28,11 +28,11 @@ def __init__(self, project_config_file, search_config_file):
     print("----------------Parse End----------------")
 
 
-def parse_project_search_file(search_config, dict_search):
+def parse_project_search_file(search_config_file, dict_search, crawler_sites):
     # parse all param list based on BaseParamClass
     try:
-        debug_print(search_config)
-        yaml_object = get_config_yaml(search_config)
+        debug_print(search_config_file)
+        yaml_object = get_config_yaml(search_config_file)
         debug_print(yaml_object)
         for key, value in yaml_object.items():
             debug_print(key)
@@ -60,8 +60,14 @@ def parse_project_search_file(search_config, dict_search):
                     dict_header = {}
                     for head_key, head_value in value[G_HEADER_REAL_ESTATE].items():
                         dict_header[head_key] = head_value
-                    URLHandlerClass.cls_request_head_dict[G_HEADER_REAL_ESTATE] = dict_header
-                    debug_print(URLHandlerClass.cls_request_head_dict[G_HEADER_REAL_ESTATE])
+                    URLHandlerClass.request_header_dict[G_HEADER_REAL_ESTATE] = dict_header
+                    debug_print(URLHandlerClass.request_header_dict[G_HEADER_REAL_ESTATE])
+                if G_HEADER_DOMAIN in value.keys():
+                    dict_header = {}
+                    for head_key, head_value in value[G_HEADER_DOMAIN].items():
+                        dict_header[head_key] = head_value
+                    URLHandlerClass.request_header_dict[G_HEADER_DOMAIN] = dict_header
+                    debug_print(URLHandlerClass.request_header_dict[G_HEADER_DOMAIN])
             if key == "RequestTimeInterval":
                 SleeperClass.c_min_time_interval = value["min_time_interval"]
                 SleeperClass.c_max_time_interval = value["max_time_interval"]
@@ -69,6 +75,9 @@ def parse_project_search_file(search_config, dict_search):
                 debug_print(SleeperClass.c_min_time_interval)
                 debug_print(SleeperClass.c_max_time_interval)
                 debug_print(SleeperClass.c_min_time_step)
+            if key == "CrawlerSites":
+                for each_site in value:
+                    crawler_sites.append(each_site)
 
     except BaseException as err:
         err_msg = "BaseException:{0}".format(str(err))
@@ -89,19 +98,17 @@ def get_config_yaml(yaml_file):
         err_msg = "config_file:{}".format(yaml_file)
         debug_print(err_msg)
         raise ConfigParserException(err_msg)
-    return None
 
 
-def read_data_from_file(config_file):
-    content_data = None
+def read_data_from_file(data_config_file):
     try:
-        with open(config_file, 'r') as file_stream:
+        with open(data_config_file, 'r') as file_stream:
             content_data = file_stream.read()
+            return content_data
     except OSError as err:
-        raise ConfigParserException("OSError:{0}-config_file:{1}".format(str(err), config_file))
+        raise ConfigParserException("OSError:{0}-config_file:{1}".format(str(err), data_config_file))
     except BaseException as err:
-        raise ConfigParserException("BaseException:{0}-config_file:{1}".format(str(err), config_file))
-    return content_data
+        raise ConfigParserException("BaseException:{0}-config_file:{1}".format(str(err), data_config_file))
 
 
 # Main test

@@ -63,6 +63,10 @@ class RealEstateClass:
         self._rh = report_handler_obj
         self._search_candidates = []
         self._logger = None
+        self._crawler_site = "realestate"
+
+    def get_crawler_site(self):
+        return self._crawler_site
 
     def run_search_task(self, spider_logger):
         """

@@ -27,11 +27,22 @@ G_LOCATION_NAME = "location_name"
 G_MIN_BED = "min_bed"
 G_MAX_BED = "max_bed"
 G_MIN_BATH = "min_bath"
+G_MAX_BATH = "max_bath"
 G_MIN_PRICE = "min_price"
 G_MAX_PRICE = "max_price"
 G_MIN_LAND_SIZE = "min_land_size"
 G_MAX_LAND_SIZE = "max_land_size"
-G_PARKING = "parking"
+G_MIN_CAR_SPACE = "min_car_space"
+G_MAX_CAR_SPACE = "max_car_space"
+
+# school
+G_SCHOOL_SCORES = "school_scores"
+G_SCHOOL_TYPE = "school_type"
+G_SCHOOL_SHEET = "school_report_sheet"
+
+# Common Switches
+G_CRAWLER_TARGET = "crawler_target"
+G_SCHOOL_TARGET = "crawler_school_target"
 
 # 1-new, 0-old
 G_NEW_OLD = "new_old_flag"
@@ -41,30 +52,70 @@ G_UNDER_CONTRACT_OFFER = "contract_offer_flag"
 
 G_ANY_CONDITION = "any"
 
+#school
 
 '''
 Property Params
 Each house:
 house address, price, beds, baths, cars, land size, link
 '''
-G_STR_ADDRESS = "house address"
+G_STR_ADDRESS = "property address"
 G_STR_PRICE = "price"
 G_STR_BEDS = "beds"
 G_STR_BATHS = "baths"
 G_STR_CARS = "cars"
 G_STR_SIZE = "land size"
 G_STR_LINK = "link"
+G_STR_TYPE = "property Type"
+G_STR_STATEMENT = "statement"
+'''
+School Params
+Each School:
+house address, price, beds, baths, cars, land size, link
+'''
+G_SCH_ADDRESS = "school address"
+G_SCH_SCORE = "scores"
+G_SCH_TYPE = "school_type"
+G_SCH_ENROLL = "enrollments"
+G_SCH_EDU = "better_education_link"
+G_SCH_MY = "my_school_link"
+
+# price
+G_PRICE_DOLLAR = "$"
+
+G_ANY_TARGET = "any"
+G_SCH_TARGET = "school"
+G_SUB_TARGET = "suburb"
+G_TARGET_LIST = [G_ANY_TARGET, G_SCH_TARGET, G_SUB_TARGET]
+
+G_SCH_TARGET_DISTRICT = "district"
+G_SCH_TARGET_TOP = "top"
+G_SCH_LIST = [G_SCH_TARGET_DISTRICT, G_SCH_TARGET_TOP]
 
 
 class PropertyParams:
     def __init__(self):
-        self.result_address = ""
-        self.result_price = ""
-        self.result_beds = ""
-        self.result_baths = ""
-        self.result_cars = ""
-        self.result_land_size = ""
-        self.result_link = ""
+        self.result_address = "N/A"
+        self.result_price = "N/A"
+        self.result_beds = "N/A"
+        self.result_baths = "N/A"
+        self.result_cars = "N/A"
+        self.result_land_size = "N/A"
+        self.result_link = "N/A"
+        self.result_type = "N/A"
+        self.result_remarks = "N/A"
+        self.result_statements = "N/A"
+
+
+class SchoolParams:
+    def __init__(self):
+        # # key - school address; Value = ["school address", "scores", "school type", "Enrollments", "edu link", "my school link"]
+        self.result_school_address = "N/A"
+        self.result_scores = "N/A"
+        self.result_school_type = "N/A"
+        self.result_enrollments = "N/A"
+        self.result_better_education_link = "N/A"
+        self.result_my_school_link = "N/A"
 
 
 class BaseParamException(Exception):
@@ -111,6 +162,9 @@ class BaseParamClass:
         self.min_bath = "1"
         self.min_bath_config_flag = False
 
+        self.max_bath = "any"
+        self.max_bath_config_flag = False
+
         self.min_price = "0"
         self.min_price_config_flag = False
 
@@ -123,8 +177,11 @@ class BaseParamClass:
         self.max_land_size = "1000000"
         self.max_land_config_flag = False
 
-        self.parking = "1"
-        self.parking_config_flag = False
+        self.min_car_space = "any"
+        self.min_car_config_flag = False
+
+        self.max_car_space = "any"
+        self.max_car_config_flag = False
 
         self.new_old = "0"
         self.new_old_config_flag = False
@@ -132,7 +189,22 @@ class BaseParamClass:
         self.contract_offer = "0"
         self.contract_offer_config_flag = False
 
+        # Any, Government, Non-government
+        self.school_gov_flag = "Any"
+        self.school_scores = "99"
+
+        # "Multiple", "Single"
+        self.school_report_sheet = "Single"
         self.search_sites = [""]
+
+        # Common Switches
+        # 'Any' - property both school district and suburb;
+        # 'school', property per school district in given suburbs provided by "location_list"
+        # 'suburb', property per suburb provided by "location_list"
+        self.crawler_target = "any"
+        # 'district' - property both school district and suburb;
+        # 'top', all top schools ranked by scores (param: school_scores) in state (param: state_name)
+        self.crawler_school_target = "district"
 
         # request job
         # in order to generate result file name
@@ -163,8 +235,7 @@ class BaseParamClass:
                 if int(self.min_bed) < 0:
                     err_msg = "Configuration error: incorrect min_bed[{}]".format(self.min_bed)
                     raise BaseParamException(err_msg)
-                else:
-                    self.min_bed_config_flag = True
+                self.min_bed_config_flag = True
 
         if G_MAX_BED in dict_parameters.keys():
             self.max_bed = dict_parameters[G_MAX_BED]
@@ -172,8 +243,7 @@ class BaseParamClass:
                 if self.min_bed_config_flag and int(self.max_bed) < int(self.min_bed):
                     err_msg = "Configuration error: incorrect max_bed[{}]".format(self.max_bed)
                     raise BaseParamException(err_msg)
-                else:
-                    self.max_bed_config_flag = True
+                self.max_bed_config_flag = True
 
         if G_MIN_BATH in dict_parameters.keys():
             self.min_bath = dict_parameters[G_MIN_BATH]
@@ -181,8 +251,15 @@ class BaseParamClass:
                 if int(self.min_bath) < 0:
                     err_msg = "Configuration error: incorrect min bath[{}]".format(self.min_bath)
                     raise BaseParamException(err_msg)
-                else:
-                    self.min_bath_config_flag = True
+                self.min_bath_config_flag = True
+
+        if G_MAX_BATH in dict_parameters.keys():
+            self.max_bath = dict_parameters[G_MAX_BATH]
+            if self.max_bath != G_ANY_CONDITION:
+                if int(self.max_bath) < 0 and int(self.max_bath) < int(self.min_bath):
+                    err_msg = "Configuration error: incorrect min bath[{}]".format(self.max_bath)
+                    raise BaseParamException(err_msg)
+                self.min_bath_config_flag = True
 
         if G_MIN_PRICE in dict_parameters.keys():
             self.min_price = dict_parameters[G_MIN_PRICE].replace(",", "")
@@ -190,8 +267,9 @@ class BaseParamClass:
                 if int(self.min_price) < 0:
                     err_msg = "Configuration error: incorrect min price[{}]".format(self.min_price)
                     raise BaseParamException(err_msg)
-                else:
-                    self.min_price_config_flag = True
+                self.min_price_config_flag = True
+            else:
+                self.min_price = "0"
 
         if G_MAX_PRICE in dict_parameters.keys():
             self.max_price = dict_parameters[G_MAX_PRICE].replace(",", "")
@@ -199,8 +277,7 @@ class BaseParamClass:
                 if int(self.max_price) < int(self.min_price):
                     err_msg = "Configuration error: incorrect max_price[{}]".format(self.max_price)
                     raise BaseParamException(err_msg)
-                else:
-                    self.max_price_config_flag = True
+                self.max_price_config_flag = True
 
         if G_MIN_LAND_SIZE in dict_parameters.keys():
             self.min_land_size = dict_parameters[G_MIN_LAND_SIZE]
@@ -212,9 +289,23 @@ class BaseParamClass:
             if self.max_land_size != G_ANY_CONDITION:
                 self.max_land_config_flag = True
 
-        if G_PARKING in dict_parameters.keys():
-            self.parking = dict_parameters[G_PARKING]
-            self.parking_config_flag = True
+        if G_MIN_CAR_SPACE in dict_parameters.keys():
+            self.min_car_space = dict_parameters[G_MIN_CAR_SPACE]
+            if self.min_car_space != G_ANY_CONDITION:
+                if int(self.min_car_space) < 0:
+                    err_msg = "Configuration error: incorrect min car space[{}]".format(self.min_car_space)
+                    raise BaseParamException(err_msg)
+                self.min_car_config_flag = True
+            else:
+                self.min_car_space = 0
+
+        if G_MAX_CAR_SPACE in dict_parameters.keys():
+            self.max_car_space = dict_parameters[G_MAX_CAR_SPACE].replace(",", "")
+            if self.max_car_space != G_ANY_CONDITION:
+                if int(self.max_car_space) < int(self.min_car_space):
+                    err_msg = "Configuration error: incorrect max car space[{}]".format(self.max_car_space)
+                    raise BaseParamException(err_msg)
+                self.max_car_config_flag = True
 
         if G_NEW_OLD in dict_parameters.keys():
             self.new_old = dict_parameters[G_NEW_OLD]
@@ -223,6 +314,21 @@ class BaseParamClass:
         if G_UNDER_CONTRACT_OFFER in dict_parameters.keys():
             self.contract_offer = dict_parameters[G_UNDER_CONTRACT_OFFER]
             self.contract_offer_config_flag = True
+
+        if G_SCHOOL_SCORES in dict_parameters.keys():
+            self.school_scores = dict_parameters[G_SCHOOL_SCORES]
+
+        if G_SCHOOL_TYPE in dict_parameters.keys():
+            self.school_gov_flag = dict_parameters[G_SCHOOL_TYPE]
+
+        if G_SCHOOL_SHEET in dict_parameters.keys():
+            self.school_report_sheet = dict_parameters[G_SCHOOL_SHEET]
+
+        if G_CRAWLER_TARGET in dict_parameters.keys():
+            self.crawler_target = dict_parameters[G_CRAWLER_TARGET]
+
+        if G_SCHOOL_TARGET in dict_parameters.keys():
+            self.crawler_school_target = dict_parameters[G_SCHOOL_TARGET]
 
     def set_location_name(self, value):
         self.location_name = value

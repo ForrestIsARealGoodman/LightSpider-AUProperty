@@ -26,7 +26,6 @@ if sys.version_info < (3, 0):
 
 class Program:
     def __init__(self):
-        sys.path.append(os.getcwd())
         ControllerClass(get_parser().parse_args()).start_job()
 
 

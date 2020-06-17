@@ -149,7 +149,7 @@ class BetterEducationClass:
                     debug_print(school_real_link)
                     debug_print(school_address)
 
-                    school_enrollment_num = school_properties[6].text.strip()
+                    school_enrollment_num = school_properties[5].text.strip()
                     info_school.result_enrollments = school_enrollment_num
                     debug_print(school_enrollment_num)
 

@@ -231,6 +231,7 @@ class DomainClass:
                     if property_price is not None:
                         info_property.result_price = property_price.text.strip()
                         if G_PRICE_DOLLAR not in info_property.result_price:
+                            SleeperClass.sleep_random()
                             self._get_statement(info_property.result_link, info_property)
 
                     # beds, baths, car spaces, land size
@@ -305,7 +306,8 @@ class DomainClass:
                     info_property.result_price = property_price
                     debug_print(property_price)
                     if G_PRICE_DOLLAR not in property_price:
-                        self._get_statement(property_link, info_property.result_price)
+                        SleeperClass.sleep_random()
+                        self._get_statement(property_link, info_property)
 
                     property_address_info = property_address_link.find('meta', itemprop="name")
                     property_address = property_address_info["content"]
@@ -385,7 +387,7 @@ class DomainClass:
                 info_property.result_land_size = property_land_size
 
             # get statement pdf link
-            property_statement = property_details.find('section', class_="statement-of-information__pdf-link")
+            property_statement = property_details.find('section', class_="statement-of-information")
             if property_statement is not None:
                 property_statement_pdf_info = property_statement.find('a')
                 property_statement_pdf_link = property_statement_pdf_info["href"]

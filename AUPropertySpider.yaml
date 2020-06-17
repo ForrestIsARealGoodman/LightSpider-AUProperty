@@ -17,7 +17,7 @@ SearchJob:
                     # City name Sydney,  Melbourne, Brisbane, Perth, Adelaide, Gold Coast, Canberra, Newcastle, Wollongong, Logan City.
                     # support two or more values
                     location_list:
-                                        - "wantirna"
+                                        - "mount waverley"
                     # suggested to be from 1 to 5 or "any"
                     # max_bed must be larger than min_bed
                     min_bed: "1"
@@ -64,7 +64,7 @@ SearchJob:
 
                     # 'district' - property both school district and suburb;
                     # 'top', all top schools ranked by scores (param: school_scores) in state (param: state_name)
-                    crawler_school_target: "top"
+                    crawler_school_target: "district"
 #
 #------------------------------------ Crawler sites -------------------------#
 #

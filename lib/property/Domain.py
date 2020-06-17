@@ -230,7 +230,7 @@ class DomainClass:
                     property_price = each_property.find('p', class_="css-mgq8yx")
                     if property_price is not None:
                         info_property.result_price = property_price.text.strip()
-                        if G_PRICE_DOLLAR not in property_price:
+                        if G_PRICE_DOLLAR not in info_property.result_price:
                             self._get_statement(info_property.result_link, info_property)
 
                     # beds, baths, car spaces, land size
@@ -305,7 +305,7 @@ class DomainClass:
                     info_property.result_price = property_price
                     debug_print(property_price)
                     if G_PRICE_DOLLAR not in property_price:
-                        self._get_statement(property_link, info_property)
+                        self._get_statement(property_link, info_property.result_price)
 
                     property_address_info = property_address_link.find('meta', itemprop="name")
                     property_address = property_address_info["content"]

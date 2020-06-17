@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4d1fb6b-adfd-4253-a8de-5b7cd35b2a32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/TestBetterEducation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AUPropertySpider.py" beforeDir="false" afterPath="$PROJECT_DIR$/AUPropertySpider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AUPropertySpider.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/AUPropertySpider.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/ConfigParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ConfigParser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/ReportHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ReportHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/URLHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/URLHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/Util.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/SpiderWorker.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/SpiderWorker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/parameter/BaseParam.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/parameter/BaseParam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/property/Realestate.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/property/Realestate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/AUPropertySpider.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/AUPropertySpider.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/property/Domain.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/property/Domain.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,14 +71,14 @@
         <counts>
           <entry key="dummy" value="6" />
           <entry key="py" value="9369" />
-          <entry key="yaml" value="1014" />
+          <entry key="yaml" value="1028" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="Python" value="9369" />
-          <entry key="YAML" value="1014" />
+          <entry key="YAML" value="1028" />
         </counts>
       </usages-collector>
     </session>
@@ -99,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AUPropertySpider.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
+            <state relative-caret-position="736">
+              <caret line="66" column="52" selection-start-line="66" selection-start-column="52" selection-end-line="66" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -114,20 +103,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/property/Domain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1456">
-              <caret line="103" column="49" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="58" />
+            <state relative-caret-position="313">
+              <caret line="288" column="56" lean-forward="true" selection-start-line="288" selection-start-column="56" selection-end-line="288" selection-end-column="56" />
               <folding>
                 <element signature="e#593#602#0" expanded="true" />
-                <marker date="1592313165428" expanded="true" signature="5234:5604" ph="..." />
+                <marker date="1592352176217" expanded="true" signature="5234:5604" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/common/ReportHandler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="388">
@@ -258,11 +247,11 @@
         <option value="$PROJECT_DIR$/lib/core/SpiderWorker.py" />
         <option value="$PROJECT_DIR$/test/TestBetterEducation.py" />
         <option value="$PROJECT_DIR$/lib/property/BetterEducation.py" />
-        <option value="$PROJECT_DIR$/lib/property/Domain.py" />
         <option value="$PROJECT_DIR$/lib/parameter/DomainParam.py" />
         <option value="$PROJECT_DIR$/lib/parameter/BaseParam.py" />
-        <option value="$PROJECT_DIR$/AUPropertySpider.yaml" />
         <option value="$PROJECT_DIR$/lib/common/ReportHandler.py" />
+        <option value="$PROJECT_DIR$/AUPropertySpider.yaml" />
+        <option value="$PROJECT_DIR$/lib/property/Domain.py" />
       </list>
     </option>
   </component>
@@ -675,28 +664,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AUPropertySpider.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AUPropertySpider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/property/Domain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1456">
-          <caret line="103" column="49" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="58" />
-          <folding>
-            <element signature="e#593#602#0" expanded="true" />
-            <marker date="1592313165428" expanded="true" signature="5234:5604" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -758,6 +729,24 @@
           <caret line="224" column="21" selection-start-line="224" selection-start-column="21" selection-end-line="224" selection-end-column="21" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AUPropertySpider.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="66" column="52" selection-start-line="66" selection-start-column="52" selection-end-line="66" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/property/Domain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="288" column="56" lean-forward="true" selection-start-line="288" selection-start-column="56" selection-end-line="288" selection-end-column="56" />
+          <folding>
+            <element signature="e#593#602#0" expanded="true" />
+            <marker date="1592352176217" expanded="true" signature="5234:5604" ph="..." />
           </folding>
         </state>
       </provider>

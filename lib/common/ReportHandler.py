@@ -122,10 +122,12 @@ class ReportHandlerClass:
         suburb_result_file = get_data_path_with_date()
         if self._bp.crawler_school_target == G_SCH_TARGET_TOP:
             suburb_result_file += self._report_school_type \
+                                  + "_" + self._bp.school_scores + "+" \
                                   + "_" + self._bp.state_name \
                                   + "_" + datetime.now().strftime("%Y%m%d%H%M%S") + ".xlsx"
         else:
             suburb_result_file += self._report_school_type \
+                                  + "_" + self._bp.school_scores + "+" \
                                   + "_" + self._report_location \
                                   + "_" + datetime.now().strftime("%Y%m%d%H%M%S") + ".xlsx"
 

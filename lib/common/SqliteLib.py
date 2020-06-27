@@ -182,12 +182,12 @@ class SqliteLibClass:
             data_delete_tuple = (school_name, property_item.result_address)
             self._cursor.execute(sql_delete_property, data_delete_tuple)
             # insert record
-            sql_suburb_property = I_TABLE_PROPERTY_TEMPLATE.format(self._tb_school_property, G_SCH_NAME)
+            sql_school_property = I_TABLE_PROPERTY_TEMPLATE.format(self._tb_school_property, G_SCH_NAME)
             data_tuple = (school_name, property_item.result_address, "0", property_item.result_price
                           , property_item.result_beds, property_item.result_baths, property_item.result_cars
                           , property_item.result_land_size, property_item.result_link, property_item.result_type
                           , property_item.result_statements, str(datetime.now()))
-            self._cursor.execute(sql_suburb_property, data_tuple)
+            self._cursor.execute(sql_school_property, data_tuple)
             self._conn_db.commit()
         except sqlite3.Error as e:
             self._logger.info("Database error in insert_property_in_school: {0}".format(e))

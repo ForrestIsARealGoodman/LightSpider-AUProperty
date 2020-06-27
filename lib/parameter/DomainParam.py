@@ -8,9 +8,13 @@ from lib.common.URLHandler import *
 # global variable
 G_DOMAIN_URL_DOMAIN = "https://www.domain.com.au"
 G_DOMAIN_URL_BASE = "https://www.domain.com.au/{0}/{1}/{2}/?{3}"
+
 G_DOMAIN_URL_SCHOOL_CATCHMENT = "https://www.domain.com.au/school-catchment/{0}"
 G_DOMAIN_URL_SCHOOL_S = "https://www.domain.com.au/schools/{0}"
-G_DOMAIN_URL_SCHOOL_PAGE = "?listingtype=forSale&pageno={0}&ssubs=0"
+G_DOMAIN_URL_SCHOOL_PAGE = "?listingtype=for{0}&pageno={1}&ssubs=0"
+G_DOMAIN_URL_SCHOOL_full = "{0}{1}{2}"
+
+G_SCH_PROPERTY_TYPE = "&ptype={0}"
 
 G_PARAM_BED = "&bedrooms={0}-{1}"
 G_PARAM_BATH = "&bathrooms={0}-{1}"
@@ -18,6 +22,9 @@ G_PARAM_PRICE = "&price={0}-{1}"
 G_PARAM_LAND_SIZE = "&landsize={0}-{1}"
 G_PARAM_CAR_SPACE = "&carspaces={0}-{1}"
 G_PARAM_PAGE_INDEX = "&page={0}"
+
+G_SCH_PAGE_LIST = "&pageno={:d}"
+G_SCH_PAGE_REGEX = "&pageno=\d+"
 
 
 class DomainParamException(Exception):
@@ -186,9 +193,37 @@ class DomainParamClass:
 
         response_redirect, rst_flag = URLHandlerClass.get_response_from_html(url_search_school_c)
         if response_redirect.url == url_search_school_c:
-            self._dict_property_candidate_school_location[real_school_name] = url_search_school_c
+            url_search_school_base = url_search_school_c
         else:
-            self._dict_property_candidate_school_location[real_school_name] = url_search_school_s
+            url_search_school_base = url_search_school_s
+
+        url_search_school_dynamic = ""
+        # bedrooms
+        if self._bp.min_bed_config_flag or self._bp.max_bed_config_flag:
+            url_param_bed = G_PARAM_BED.format(self._bp.min_bed, self._bp.max_bed)
+            url_search_school_dynamic += url_param_bed
+
+        # bathrooms
+        if self._bp.min_bath_config_flag or self._bp.max_bath_config_flag:
+            url_param_bath = G_PARAM_BATH.format(self._bp.min_bath, self._bp.max_bath)
+            url_search_school_dynamic += url_param_bath
+
+        # price
+        if self._bp.min_price_config_flag or self._bp.max_price_config_flag:
+            url_param_price = G_PARAM_PRICE.format(self._bp.min_price, self._bp.max_price)
+            url_search_school_dynamic += url_param_price
+
+        # car space
+        if self._bp.min_car_config_flag or self._bp.max_car_config_flag:
+            url_param_car = G_PARAM_CAR_SPACE.format(self._bp.min_car_space, self._bp.max_car_space)
+            url_search_school_dynamic += url_param_car
+
+        # property type
+        url_param_type = G_SCH_PROPERTY_TYPE.format(self._bp.property_type)
+        url_search_school_dynamic += url_param_type
+        url_school_page = G_DOMAIN_URL_SCHOOL_PAGE.format(self._bp.source_type, 1)
+        url_search_school_full = url_search_school_base + url_school_page + url_search_school_dynamic
+        self._dict_property_candidate_school_location[real_school_name] = url_search_school_full
 
     @classmethod
     def generate_url_suburb_with_page_index(cls, search_url, index_page):
@@ -198,8 +233,10 @@ class DomainParamClass:
 
     @classmethod
     def generate_url_school_with_page_index(cls, search_url, index_page):
-        new_index_page = G_DOMAIN_URL_SCHOOL_PAGE.format(index_page)
-        new_search_url = str(search_url) + str(new_index_page)
+        str_new_index_page = G_SCH_PAGE_LIST.format(index_page)
+        pattern_page = re.compile(G_SCH_PAGE_REGEX)
+        str_old_index_page = (pattern_page.findall(search_url))[0]
+        new_search_url = search_url.replace(str_old_index_page, str_new_index_page, 1)
         return new_search_url
 
 

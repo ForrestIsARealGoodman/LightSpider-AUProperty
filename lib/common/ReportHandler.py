@@ -1,17 +1,15 @@
-import os
-import sys
 from lib.parameter.BaseParam import *
 # Writing to an excel
 # sheet using Python
 import xlsxwriter
-from lib.common.Util import *
-from datetime import datetime
+from lib.core.Logger import *
+from lib.common.SqliteLib import *
+import threading
 
 G_MULTIPLE = 'Multiple'
 G_SINGLE = 'Single'
 G_SCHOOL_ASSEMBLY = 'School Assembly'
 G_SCHOOL_DISTRICT = 'School District'
-G_STRING_NULL = 'N/A'
 
 
 class ReportHandlerException(Exception):
@@ -48,14 +46,27 @@ class ReportHandlerClass:
         else:
             self._report_suburb_property[sub_location] = property_list
 
+    def insert_suburb_property_record(self, sub_location, property_record):
+        if sub_location not in self._report_suburb_property.keys():
+            self._report_suburb_property[sub_location] = list()
+        self._report_suburb_property[sub_location].append(property_record)
+
     def insert_school_property_result(self, sch_location, property_list):
         if sch_location in self._report_school_property.keys():
             self._report_school_property[sch_location] += property_list
         else:
             self._report_school_property[sch_location] = property_list
 
+    def insert_school_property_record(self, sch_location, property_record):
+        if sch_location not in self._report_school_property.keys():
+            self._report_school_property[sch_location] = list()
+        self._report_school_property[sch_location].append(property_record)
+
     def insert_school_list_result(self, school_dict):
         self._report_school = {k: v for k, v in school_dict.items()}
+
+    def insert_school_record(self, school_name, school_record):
+        self._report_school[school_name] = school_record
 
     def write_to_excel(self, spider_logger):
         self._logger = spider_logger
@@ -68,7 +79,7 @@ class ReportHandlerClass:
         # Start from the first cell.
         # Rows and columns are zero indexed.
         if not self._report_suburb_property:
-            self._logger.warning("Reports is empty")
+            self._logger.warning("Suburb property is empty")
             return None
         self._logger.info("Start to write suburb property reports to excel...")
         suburb_result_file = get_data_path_with_date()
@@ -112,13 +123,6 @@ class ReportHandlerClass:
         # first_line = "house address, price, beds, baths, cars, land size, link, type, remarks"
         # Start from the first cell.
         # Rows and columns are zero indexed.
-        if not self._report_school:
-            self._logger.warning("School Reports is empty")
-            return None
-        if not self._report_school_property:
-            self._logger.warning("School property Reports is empty")
-            return None
-        self._logger.info("Start to write school property reports to excel...")
         suburb_result_file = get_data_path_with_date()
         if self._bp.crawler_school_target == G_SCH_TARGET_TOP:
             suburb_result_file += self._report_school_type \
@@ -130,6 +134,14 @@ class ReportHandlerClass:
                                   + "_" + self._bp.school_scores + "+" \
                                   + "_" + self._report_location \
                                   + "_" + datetime.now().strftime("%Y%m%d%H%M%S") + ".xlsx"
+
+        if not self._report_school:
+            self._logger.warning("School Reports is empty")
+            return None
+        if not self._report_school_property:
+            self._logger.warning("School property Reports is empty")
+            return None
+        self._logger.info("Start to write school property reports to excel...")
 
         workbook = xlsxwriter.Workbook(suburb_result_file)
         self._write_school_list_internal(workbook)
@@ -278,18 +290,88 @@ class ReportHandlerClass:
         self._report_type = value
 
 
+class ReportManagerClass:
+    def __init__(self, db_obj, increment_flag):
+        # key - report location;
+        # value: report object
+        self._report_dict = dict()
+        self._db = db_obj
+        self._increment_flag = increment_flag
+
+    def initialize_db_connection(self):
+        self._db.initialize_db()
+
+    def add_report_object(self, report_location, instance_base_param):
+        if report_location not in self._report_dict:
+            report_obj = ReportHandlerClass(instance_base_param)
+            report_obj.report_location = report_location
+            report_obj.report_type = instance_base_param.source_type
+            self._report_dict[report_location] = report_obj
+
+    def insert_report_object(self, report_data_obj):
+        report_type = report_data_obj.report_type
+        report_location = report_data_obj.report_location
+        search_location = report_data_obj.search_location
+        search_record = report_data_obj.search_record
+        if report_location in self._report_dict:
+            report_obj = self._report_dict[report_location]
+            """
+            class ReportType(Enum):
+                SuburbProperty = 1
+                SchoolProperty = 2
+                SchoolInfo = 3
+                NullInfo = 4
+            """
+            if report_type == ReportType.SuburbProperty:
+                exists_flag = self._db.query_property_in_suburb(search_location, search_record)
+                if exists_flag:
+                    if not self._increment_flag:
+                        report_obj.insert_suburb_property_record(search_location, search_record)
+                else:
+                    self._db.insert_property_in_suburb(search_location, search_record)
+                    report_obj.insert_suburb_property_record(search_location, search_record)
+
+            elif report_type == ReportType.SchoolProperty:
+                exists_flag = self._db.query_property_in_school(search_location, search_record)
+                if exists_flag:
+                    if not self._increment_flag:
+                        report_obj.insert_school_property_record(search_location, search_record)
+                else:
+                    report_obj.insert_school_property_record(search_location, search_record)
+                    self._db.insert_property_in_school(search_location, search_record)
+            elif report_type == ReportType.SchoolDistrict:
+                report_obj.insert_school_list_result(search_record)
+                self._db.insert_school_in_suburb(search_location, search_record)
+            elif report_type == ReportType.SchoolTop:
+                report_obj.insert_school_list_result(search_record)
+                self._db.insert_school_in_suburb(search_location, search_record)
+
+    def dump_reports(self, logger_obj):
+        for key in self._report_dict:
+            self._report_dict[key].write_to_excel(logger_obj)
+
+    @classmethod
+    def get_report_thread(cls, data_queue, report_manager_obj):
+        report_manager_obj.initialize_db_connection()
+        logger = LoggerClass.get_listener_logger()
+        logger.info("get_report_thread started[{}]".format(threading.get_ident()))
+        while True:
+            try:
+                report_data = data_queue.get()
+                if report_data is None:  # We send this as a sentinel to tell the listener to quit.
+                    break
+                report_manager_obj.insert_report_object(report_data)
+                # logger = logging.getLogger(record.name)
+                logger.info(report_data.search_record)
+                time.sleep(0.05)
+            except data_queue.Empty:
+                continue
+            except BaseException:
+                print('Whoops! Problem:', file=sys.stderr)
+                traceback.print_exc(file=sys.stderr)
+        logger.info("get_report_thread finished[{}]".format(threading.get_ident()))
 
 
 # Main test
 if __name__ == '__main__':
-    dict_test = {}
-    dict_test['a1'] = ['aa1','aa2']
-    dict_test['b1'] = ['bb1', 'bb2']
-    debug_print(dict_test)
-    test_a = "a1"
-    test_v = ['aa3','aaa4']
-    if test_a in dict_test.keys():
-        dict_test[test_a] +=test_v
-    else:
-        dict_test[test_a] = test_v
-    debug_print(dict_test)
+    pass

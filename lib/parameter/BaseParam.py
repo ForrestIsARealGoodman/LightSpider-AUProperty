@@ -2,6 +2,7 @@ import os
 import sys
 from lib.common.Util import *
 import uuid
+from enum import Enum
 
 '''
 define all potential conditions to filter properties
@@ -83,6 +84,7 @@ G_SCH_MY = "my_school_link"
 # price
 G_PRICE_DOLLAR = "$"
 
+G_STRING_NULL = 'N/A'
 G_ANY_TARGET = "any"
 G_SCH_TARGET = "school"
 G_SUB_TARGET = "suburb"
@@ -109,13 +111,32 @@ class PropertyParams:
 
 class SchoolParams:
     def __init__(self):
-        # # key - school address; Value = ["school address", "scores", "school type", "Enrollments", "edu link", "my school link"]
+        """
+        key - school address;
+        Value = ["school address", "scores", "school type", "Enrollments", "edu link", "my school link"]
+        """
         self.result_school_address = "N/A"
         self.result_scores = "N/A"
         self.result_school_type = "N/A"
         self.result_enrollments = "N/A"
         self.result_better_education_link = "N/A"
         self.result_my_school_link = "N/A"
+
+
+class ReportType(Enum):
+    SuburbProperty = 1
+    SchoolProperty = 2
+    SchoolDistrict = 3
+    SchoolTop = 4
+    NullInfo = 5
+
+
+class ReportData:
+    def __init__(self):
+        self.report_type = ReportType.NullInfo
+        self.report_location = ""
+        self.search_location = ""
+        self.search_record = ""
 
 
 class BaseParamException(Exception):

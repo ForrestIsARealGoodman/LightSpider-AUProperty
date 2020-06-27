@@ -1,6 +1,7 @@
 from lib.common.ConfigParser import *
-from lib.common.Util import *
+import multiprocessing
 from lib.core.SpiderWorker import *
+from lib.core.Logger import *
 
 
 class ControllerException(Exception):
@@ -20,8 +21,12 @@ class ControllerClass:
         self._logger = None
         self._log_level = None
         self._log_queue = None
+        self._data_queue = None
+        self._report_manager_obj = None
         self._listener = None
+        self._data_thread = None
         self._crawler_sites = []
+        self._db_ops = None
         self.initialize_params(dict_param)
 
     def initialize_params(self, dict_param):
@@ -32,9 +37,14 @@ class ControllerClass:
         else:
             self._log_level = get_log_level(log_level)
         self._logger = LoggerClass.get_listener_logger()
+        self._db_ops = SqliteLibClass(self._logger)
         self._log_queue = multiprocessing.Queue(-1)
-        self._listener = threading.Thread(target=LoggerClass.listener_thread, args=(self._log_queue,))
+        self._data_queue = multiprocessing.Queue(-1)
+        self._listener = threading.Thread(target=LoggerClass.listener_thread,
+                                          args=(self._log_queue,))
         self._listener.start()
+        increment_flag = dict_param.increment
+        self._report_manager_obj = ReportManagerClass(self._db_ops, increment_flag)
         # Parse search config
         parse_project_search_file(get_search_config_path(), self._dict_search, self._crawler_sites)
         debug_print(self._dict_search)
@@ -47,10 +57,15 @@ class ControllerClass:
             process_worker = multiprocessing.Process(target=ControllerClass.run_job,
                                                      args=(spider_worker,
                                                            self._log_queue,
-                                                           LoggerClass.get_worker_logger,
                                                            self._log_level,
-                                                           self._crawler_sites))
+                                                           self._crawler_sites,
+                                                           self._data_queue))
             self._process_list.append(process_worker)
+            self._report_manager_obj.add_report_object(key, value)
+
+        self._data_thread = threading.Thread(target=ReportManagerClass.get_report_thread,
+                                             args=(self._data_queue, self._report_manager_obj))
+        self._data_thread.start()
 
         for each_worker in self._process_list:
             each_worker.start()
@@ -61,11 +76,16 @@ class ControllerClass:
         self._log_queue.put_nowait(None)
         self._listener.join()
 
+        self._data_queue.put_nowait(None)
+        self._data_thread.join()
+
+        self._report_manager_obj.dump_reports(self._logger)
+
         self._logger.info("All spider workers completed - Please check the files under folder 'data'")
 
     @classmethod
-    def run_job(cls, worker_obj, logger_queue, log_configurer, log_level, crawler_sites):
-        worker_obj.run_spider_job(logger_queue, log_configurer, log_level, crawler_sites)
+    def run_job(cls, worker_obj, logger_queue, log_level, crawler_sites, data_queue):
+        worker_obj.run_spider_job(logger_queue, log_level, crawler_sites, data_queue)
 
 
 # Main test

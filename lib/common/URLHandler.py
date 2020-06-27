@@ -47,6 +47,7 @@ class URLHandlerClass:
             if cls.default_session is None or header_data != cls.current_header:
                 cls.default_session = requests.session()
                 cls.current_header = header_data
+            cls.default_session.keep_alive = False
             get_response_content = cls.default_session.get(url, headers=header_data, timeout=60)
             get_response_content.raise_for_status()
             get_response_content.encoding = 'utf-8'
@@ -74,7 +75,8 @@ class URLHandlerClass:
             if cls.default_session is None or header_data != cls.current_header:
                 cls.default_session = requests.session()
                 cls.current_header = header_data
-            get_response_content = cls.default_session.get(url, headers=header_data, timeout=60)
+            cls.default_session.keep_alive = False
+            get_response_content = cls.default_session.get(url, headers=header_data, timeout=60, verify=False)
             get_response_content.raise_for_status()
             get_response_content.encoding = 'utf-8'
             result_flag = True
@@ -107,7 +109,10 @@ class URLHandlerClass:
             if cls.default_session is None or header_data != cls.current_header:
                 cls.default_session = requests.session()
                 cls.current_header = header_data
-            post_response_content = cls.default_session.post(url, headers=header_data, data=data_dict, timeout=60)
+            post_response_content = cls.default_session.post(url, headers=header_data,
+                                                             data=data_dict,
+                                                             timeout=60,
+                                                             verify=False)
             post_response_content.raise_for_status()
             post_response_content.encoding = 'utf-8'
             result_content = post_response_content.text

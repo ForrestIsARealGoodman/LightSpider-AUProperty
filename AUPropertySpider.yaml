@@ -28,7 +28,7 @@ SearchJob:
                     max_bath: "any"
 
                     # 100000 ($) or "any"
-                    min_price: "500,000"
+                    min_price: "980,000"
 
                     # 1000000 ($) "any"
                     max_price: "1,000,000"

@@ -51,18 +51,18 @@ class DomainClass:
 
     cls_class_dict = {}
 
-    def __init__(self, base_param_obj, report_handler_obj):
+    def __init__(self, base_param_obj):
         self._dp = DomainParamClass(base_param_obj)
         self._be = BetterEducationClass(base_param_obj)
-        self._rh = report_handler_obj
         self._search_candidates = []
         self._logger = None
+        self._data_queue = None
         self._crawler_site = "domain"
 
     def get_crawler_site(self):
         return self._crawler_site
 
-    def run_search_task(self, spider_logger):
+    def run_search_task(self, spider_logger, data_queue):
         """
         _get_all_suburb_candidates()
         initialize_reports()
@@ -71,6 +71,7 @@ class DomainClass:
         :return:
         """
         self._logger = spider_logger
+        self._data_queue = data_queue
         self._get_all_candidates()
         self._search_property_task()
 
@@ -102,14 +103,23 @@ class DomainClass:
     def _get_all_school_candidates(self):
         crawler_school_target_param = self._dp.get_crawler_school_target_name()
         if crawler_school_target_param == G_SCH_TARGET_TOP:
-            school_search_state = self._dp.get_search_state_name()
-            self._logger.info("Starting to get schools from state [{0}]...".format(school_search_state))
+            school_report_type = ReportType.SchoolTop
+            school_search_region = self._dp.get_search_state_name()
+            self._logger.info("Starting to get schools from state [{0}]...".format(school_search_region))
             school_dict = self._be.get_schools_from_top()
         else:
-            school_search_location = self._dp.get_search_location_name()
-            self._logger.info("Starting to get schools from location [{0}]...".format(school_search_location))
-            school_dict = self._be.get_schools_from_suburb(school_search_location)
-        self._rh.insert_school_list_result(school_dict)
+            school_report_type = ReportType.SchoolDistrict
+            school_search_region = self._dp.get_search_location_name()
+            self._logger.info("Starting to get schools from location [{0}]...".format(school_search_region))
+            school_dict = self._be.get_schools_from_suburb(school_search_region)
+        # self._rh.insert_school_list_result(school_dict)
+        report_result = ReportData()
+        report_result.report_type = school_report_type
+        report_result.report_location = school_search_region
+        report_result.search_location = school_search_region
+        report_result.search_record = dict()
+        report_result.search_record = {k: v for k, v in school_dict.items()}
+        self._data_queue.put(report_result)
 
         for each_school in school_dict:
             each_school_name = each_school.split(",")[0]
@@ -162,7 +172,7 @@ class DomainClass:
             if access_flag:
                 if property_list is None or len(property_list) == 0:
                     break
-            self._rh.insert_suburb_property_result(candidate_location, property_list)
+            # self._rh.insert_suburb_property_result(candidate_location, property_list)
             index_page += 1
             SleeperClass.sleep_random()
 
@@ -172,11 +182,11 @@ class DomainClass:
         index_page = 1
         while True:
             current_page = self._dp.generate_url_school_with_page_index(url_first_page, index_page)
-            access_flag, property_list = self._search_page_school(current_page)
+            access_flag, property_list = self._search_page_school(current_page, school_location)
             if access_flag:
                 if property_list is None or len(property_list) == 0:
                     break
-            self._rh.insert_school_property_result(school_location, property_list)
+            # self._rh.insert_school_property_result(school_location, property_list)
             index_page += 1
             SleeperClass.sleep_random()
 
@@ -210,6 +220,7 @@ class DomainClass:
             property_list = rst_bs4.find_all('div', class_="css-qrqvvg")
             for each_property in property_list:
                 try:
+                    report_result = ReportData()
                     info_property = PropertyParams()
                     # check postal code
                     postal_code_tag = each_property.find('span', itemprop="postalCode")
@@ -233,6 +244,9 @@ class DomainClass:
                         if G_PRICE_DOLLAR not in info_property.result_price:
                             SleeperClass.sleep_random()
                             self._get_statement(info_property.result_link, info_property)
+
+                    # property type
+                    info_property.result_type = self._dp.get_search_property_type()
 
                     # beds, baths, car spaces, land size
                     residential_primary = each_property.find_all('span', class_="css-1rzse3v")
@@ -258,14 +272,18 @@ class DomainClass:
                         land_figure = residential_primary[3].contents[0]
                         info_property.result_land_size = unidecode.unidecode(land_figure.string)
 
-                    result_properties.append(info_property)
+                    report_result.report_location = self._dp.get_search_location_name()
+                    report_result.report_type = ReportType.SuburbProperty
+                    report_result.search_location = candidate_location
+                    report_result.search_record = info_property
+                    self._data_queue.put(report_result)
 
                 except BaseException as err:
                     self._logger.error("BaseException:{0}-url page:{1}".format(str(err), url_suburb_page))
 
         return rst_flag, result_properties
 
-    def _search_page_school(self, url_school_page):
+    def _search_page_school(self, url_school_page, school_location):
         self._logger.info("start to search page[{}]".format(url_school_page))
         result_properties = []
         rst_content, rst_flag = URLHandlerClass.get_content_from_html(url_school_page)
@@ -292,6 +310,7 @@ class DomainClass:
                                                class_="nearby-properties__property nearby-properties__on-market-property")
             for each_property in list_properties:
                 try:
+                    report_result = ReportData()
                     info_property = PropertyParams()
                     property_price_info = each_property.find('div',
                                                              class_="nearby-properties__info-block nearby-properties__display-price")
@@ -345,7 +364,11 @@ class DomainClass:
                         debug_print(property_car)
                         info_property.result_cars = property_car
 
-                    result_properties.append(info_property)
+                    report_result.report_location = self._dp.get_search_location_name()
+                    report_result.report_type = ReportType.SchoolProperty
+                    report_result.search_location = school_location
+                    report_result.search_record = info_property
+                    self._data_queue.put(report_result)
                 except BaseException as err:
                     self._logger.error("BaseException:{0}-url page:{1}".format(str(err), url_school_page))
 

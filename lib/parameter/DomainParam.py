@@ -87,6 +87,9 @@ class DomainParamClass:
     def get_search_location_name(self):
         return self._bp.location_name
 
+    def get_search_property_type(self):
+        return self._bp.property_type
+
     def get_search_state_name(self):
         return self._bp.state_name
 

@@ -58,17 +58,17 @@ class RealEstateClass:
 
     cls_class_dict = {}
 
-    def __init__(self, base_param_obj, report_handler_obj):
+    def __init__(self, base_param_obj):
         self._rp = RealEstateParamClass(base_param_obj)
-        self._rh = report_handler_obj
         self._search_candidates = []
         self._logger = None
+        self._data_queue = None
         self._crawler_site = "realestate"
 
     def get_crawler_site(self):
         return self._crawler_site
 
-    def run_search_task(self, spider_logger):
+    def run_search_task(self, spider_logger, data_queue):
         """
         _get_all_suburb_candidates()
         initialize_reports()
@@ -77,6 +77,7 @@ class RealEstateClass:
         :return:
         """
         self._logger = spider_logger
+        self._data_queue = data_queue
         self._get_all_suburb_candidates()
         self._rp.generate_spider_urls(self._search_candidates)
         for candidate_location in self._search_candidates:
@@ -119,7 +120,6 @@ class RealEstateClass:
             if access_flag:
                 if house_list is None or len(house_list) == 0:
                     break
-            self._rh.insert_property_result(candidate_location, house_list)
             index_page += 1
             SleeperClass.sleep_random()
 

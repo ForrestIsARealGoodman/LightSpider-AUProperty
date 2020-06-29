@@ -139,9 +139,10 @@ class DomainClass:
                     school_value = each_sch_info["value"]
                     school_label = each_sch_info["label"]
                     candidate_type = each_sch_info["category"]
-                    if candidate_type == "School" and each_school_name in school_label:
-                        self._dp.generate_spider_urls_school(each_school, school_value)
-                        self._logger.info("Candidate School[{0}]".format(each_school))
+                    if self._dp.check_if_location_valid(school_label):
+                        if candidate_type == "School" and each_school_name in school_label:
+                            self._dp.generate_spider_urls_school(each_school, school_value)
+                            self._logger.info("Candidate School[{0}]".format(each_school))
 
     def _get_all_candidates(self):
         crawler_target_param = self._dp.get_crawler_target_name()

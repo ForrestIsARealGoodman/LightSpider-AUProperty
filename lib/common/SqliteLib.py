@@ -178,9 +178,9 @@ class SqliteLibClass:
     def insert_property_in_school(self, school_name, property_item):
         try:
             # delete if possible
-            sql_delete_property = D_TABLE_PROPERTY_TEMPLATE.format(self._tb_school_property, G_SCH_NAME)
-            data_delete_tuple = (school_name, property_item.result_address)
-            self._cursor.execute(sql_delete_property, data_delete_tuple)
+            # sql_delete_property = D_TABLE_PROPERTY_TEMPLATE.format(self._tb_school_property, G_SCH_NAME)
+            # data_delete_tuple = (school_name, property_item.result_address)
+            # self._cursor.execute(sql_delete_property, data_delete_tuple)
             # insert record
             sql_school_property = I_TABLE_PROPERTY_TEMPLATE.format(self._tb_school_property, G_SCH_NAME)
             data_tuple = (school_name, property_item.result_address, "0", property_item.result_price

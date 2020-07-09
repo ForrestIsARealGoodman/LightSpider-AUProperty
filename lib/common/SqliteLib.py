@@ -159,9 +159,9 @@ class SqliteLibClass:
         """
         try:
             # delete if possible
-            sql_delete_property = D_TABLE_PROPERTY_TEMPLATE.format(self._tb_suburb_property, G_SUB_NAME)
-            data_delete_tuple = (suburb_name, property_item.result_address)
-            self._cursor.execute(sql_delete_property, data_delete_tuple)
+            # sql_delete_property = D_TABLE_PROPERTY_TEMPLATE.format(self._tb_suburb_property, G_SUB_NAME)
+            # data_delete_tuple = (suburb_name, property_item.result_address)
+            # self._cursor.execute(sql_delete_property, data_delete_tuple)
             # insert record
             sql_suburb_property = I_TABLE_PROPERTY_TEMPLATE.format(self._tb_suburb_property, G_SUB_NAME)
             data_tuple = (suburb_name, property_item.result_address, "0", property_item.result_price
@@ -209,9 +209,9 @@ class SqliteLibClass:
                        "update_date) " \
                 """
                 # delete if possible
-                sql_delete_district = D_TABLE_SCH_TEMPLATE.format(self._tb_school_district)
-                data_delete_tuple = (suburb_name, school_item.result_school_address)
-                self._cursor.execute(sql_delete_district, data_delete_tuple)
+                # sql_delete_district = D_TABLE_SCH_TEMPLATE.format(self._tb_school_district)
+                # data_delete_tuple = (suburb_name, school_item.result_school_address)
+                # self._cursor.execute(sql_delete_district, data_delete_tuple)
                 # insert record
                 sql_school_district = I_TABLE_SCH_TEMPLATE.format(self._tb_school_district)
                 data_tuple = (suburb_name, school_item.result_school_address
@@ -244,9 +244,9 @@ class SqliteLibClass:
                        "update_date) " \
                 """
                 # delete if possible
-                sql_delete_top = D_TABLE_SCH_TEMPLATE.format(tb_top_school_name)
-                data_delete_tuple = ('N/A', school_item.result_school_address)
-                self._cursor.execute(sql_delete_top, data_delete_tuple)
+                # sql_delete_top = D_TABLE_SCH_TEMPLATE.format(tb_top_school_name)
+                # data_delete_tuple = ('N/A', school_item.result_school_address)
+                # self._cursor.execute(sql_delete_top, data_delete_tuple)
                 # insert record
                 sql_school_top = I_TABLE_SCH_TEMPLATE.format(tb_top_school_name)
                 data_tuple = ('N/A', school_item.result_school_address

@@ -3,10 +3,8 @@ kind: Component
 metadata:
   name: github
   description: An example of a Backstage application.
-  # Example for optional annotations
-  # annotations:
-     github.com/project-slug: ForrestIsARealGoodman/ladder
-  #  backstage.io/techdocs-ref: dir:.
+  annotations:
+     github.com/project-slug: ForrestIsARealGoodman/LightSpider-AUProperty
 spec:
   type: service
   owner: forrestisagoodman@gmail.com

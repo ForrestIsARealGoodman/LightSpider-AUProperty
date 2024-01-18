@@ -1,11 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: demoapp
+  name: awnapp
   description: An example of a Backstage application.
-  title: Arcticwolf backstage # optional, human readable component name
+  title: Arcticwolf AWN backstage # optional, human readable component name
   annotations:
-    github.com/project-slug: 'rtkwlf/backstage'
+    github.com/project-slug: 'rtkwlf/awn'
 spec:
   type: service
   owner: user:forrestxiong

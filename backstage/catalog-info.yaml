@@ -1,11 +1,12 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: github
+  name: demoapp
   description: An example of a Backstage application.
+  title: Arcticwolf backstage # optional, human readable component name
   annotations:
-     github.com/project-slug: ForrestIsARealGoodman/LightSpider-AUProperty
+    github.com/project-slug: 'rtkwlf/backstage'
 spec:
   type: service
-  owner: forrestisagoodman@gmail.com
+  owner: user:forrestxiong
   lifecycle: experimental

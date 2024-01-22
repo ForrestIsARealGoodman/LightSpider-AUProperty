@@ -8,5 +8,5 @@ metadata:
     github.com/project-slug: 'rtkwlf/awn'
 spec:
   type: service
-  owner: user:forrestxiong
+  owner: forrest.xiong@arcticwolf.com
   lifecycle: experimental
